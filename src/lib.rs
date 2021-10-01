@@ -13,7 +13,7 @@ where
 
 pub trait StackOp {
     type Offset: Offset;
-    fn pointer_change(&self) -> Self::Offset;
+    fn pointer_change(&self, offset: &mut Self::Offset);
 }
 
 mod stackoff;

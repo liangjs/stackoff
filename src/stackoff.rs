@@ -69,10 +69,10 @@ where
     {
         let data = match influx.data.clone() {
             None => None,
-            Some(influx) => {
+            Some(mut offset) => {
                 let node = node.weight();
-                let change = node.pointer_change();
-                Some(influx + change)
+                node.pointer_change(&mut offset);
+                Some(offset)
             }
         };
         Self::State { data }
